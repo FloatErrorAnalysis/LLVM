@@ -1,4 +1,6 @@
 #include "math.h"
+#include <iostream>
+using namespace std;
 
 double sqrt_minus(double x) {
     if (x < 1) {
@@ -8,5 +10,12 @@ double sqrt_minus(double x) {
 }
 
 int main() {
-    sqrt_minus(10);
+    double in[10];
+    for(int i = 0; i < 10; i++) {
+        in[i] = i * 0.1;
+        cout << in[i] << endl;
+    }
+
+    cout << sqrt_minus(10);
+
 }
