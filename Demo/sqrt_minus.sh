@@ -1,0 +1,1 @@
+clang -Os -S -emit-llvm functions/sqrt_minus.cpp -o functions/ll_file/sqrt_minus.ll
