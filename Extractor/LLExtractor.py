@@ -1,5 +1,6 @@
 import unittest
 from Extractor import LLVM as llvm
+import os
 
 module_source = """; ModuleID = 'example.c'
 target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
@@ -82,7 +83,12 @@ class TestSuite(unittest.TestCase):
 
 
 module = load_module(module_source)
+#print(get_non_existing_basic_block())
 for function in module.iter_functions():
-    for bb in function.iter_basic_blocks():
-        for instruction in bb.iter_instructions():
-            instruction.dump()
+     if function.dump() is not None:
+         print(function.dump())
+# with open(os.getcwd() + '/Extractor/sqrt_func.txt', 'w') as ll_file:
+#     ll_file.write(function_str)
+    # for bb in function.iter_basic_blocks():
+    #     for instruction in bb.iter_instructions():
+    #         print(instruction.dump())
