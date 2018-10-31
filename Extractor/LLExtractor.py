@@ -81,5 +81,8 @@ class TestSuite(unittest.TestCase):
         assert operand2 in dictionary
 
 
-if __name__ == '__main__':
-    unittest.main()
+module = load_module(module_source)
+for function in module.iter_functions():
+    for bb in function.iter_basic_blocks():
+        for instruction in bb.iter_instructions():
+            instruction.dump()
