@@ -1,4 +1,3 @@
-import unittest
 from Extractor import LLVM as llvm
 
 module_source = '''source_filename = "functions/sqrt_minus.cpp"
@@ -184,8 +183,8 @@ def get_non_existing_basic_block(ir):
 
 module = load_module(module_source)
 print(get_function_number(module_source))
-func_lst = {}
 for func in module.iter_functions():
-    if func is not None:
-        print('**')
-        func.dump()
+    func.dump()
+    for bb in func.iter_basic_blocks():
+        for ins in bb.iter_instructions():
+            ins.dump()
