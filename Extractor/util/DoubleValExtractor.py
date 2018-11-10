@@ -32,6 +32,9 @@ class DoubleValExtractor:
                 self.double_functions.append(line)
             if '}' in line:
                 flag = False
+            # 申明
+            if 'declare double' in line:
+                self.double_functions.append(line)
 
         return self.double_functions
 
