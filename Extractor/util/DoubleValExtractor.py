@@ -49,10 +49,11 @@ class DoubleValExtractor:
 
         return list(set(self.double_vars))
 
+    def extract_double_concerned_statements(self):
+        return list(set(self.double_statements + self.extract_double_functions()))
+
 
 extractor = DoubleValExtractor('/Users/py/GitHub/LLVM/functions/ll_file/sqrt_minus.ll')
-# print(extractor.ll_file_content_list)
-# print(extractor.double_statements)
-for line in extractor.extract_double_functions():
-    print(line)
-# print(extractor.extract_double_functions())
+with open('double_ll', 'w') as f:
+    f.writelines(extractor.extract_double_concerned_statements())
+
